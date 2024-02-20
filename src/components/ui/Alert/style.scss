@@ -1,0 +1,57 @@
+// ** error
+$errorBg: rgb(192 9 29 /15%);
+$errorColor: #ef8d8dfa;
+$errorBorderColor: rgba(255, 25, 0, 0.322);
+// ** success
+$successBg: rgba(246, 238, 9, 0.127);
+$successColor: #7acf58d6;
+$successBorderColor: rgba(0, 255, 0, 0.322);
+// ** worning
+$worningBg: rgba(255, 197, 23, 5%);
+$worningColor: #fcd253;
+$worningBorderColor: rgba(255, 213, 0, 0.793);
+// ** default
+$defaultBg: rgba(29, 31, 32, 71%);
+$defaultColor: #c8c8c8;
+$defaultBorderColor: #c8c8c8;
+// ** info
+$infoColor: #bcc0ff;
+$infoBorderColor: #646cff;
+$infoBg: rgba(100, 108, 255, 8%);
+
+@mixin alert($name, $clr, $bgClr, $borderClr) {
+  $linkClr: $borderClr;
+  .#{$name} {
+    border: 1px dotted $borderClr;
+    background-color: $bgClr;
+    color: $clr;
+    border-radius: 0.8rem;
+    padding: 1.3rem;
+
+    .alert-header {
+      display: flex;
+      align-items: center;
+      & > :first-child {
+        margin-right: 0.9rem;
+      }
+      .close {
+        margin-inline-start: auto;
+      }
+    }
+    p {
+      font-weight: 500;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-top: 1rem;
+      a {
+        color: $linkClr;
+      }
+    }
+  }
+}
+
+@include alert("alert-error", $errorColor, $errorBg, $errorBorderColor);
+@include alert("alert-info", $infoColor, $infoBg, $infoBorderColor);
+@include alert("alert-default", $defaultColor, $defaultBg, $defaultBorderColor);
+@include alert("alert-success", $successColor, $successBg, $successBorderColor);
+@include alert("alert-worning", $worningColor, $worningBg, $worningBorderColor);
